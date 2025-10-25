@@ -47,7 +47,9 @@ public class ScrollLayer : MonoBehaviour
             float camDistance = cam.position.x - bg.position.x;
             if (Mathf.Abs(camDistance) >= spriteWidth)
             {
+
                 float offest = (camDistance > 0) ? spriteWidth * 2f : -spriteWidth * 2f;
+
                 bg.position += new Vector3(offest, 0, 0);
             }
         }
