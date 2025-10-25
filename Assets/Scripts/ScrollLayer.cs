@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class ScrollLayer : MonoBehaviour
@@ -30,5 +32,24 @@ public class ScrollLayer : MonoBehaviour
         //Obtiene el ancho del sprite automaticamente
         spriteWidth = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.x;
 
-    }   
+    }
+
+    private void Update()
+    {
+        //Mueve el fondo con la cámara
+        Vector3 deltaMovement = cam.position - lastCampos;
+        transform.position += new Vector3(deltaMovement.x * parallaxMultiplier, 0, 0);
+        lastCampos = cam.position;
+
+        //Reposiciona los fondos si la cámara avanza demasiado 
+        foreach (var bg in backgrounds)
+        {
+            float camDistance = cam.position.x - bg.position.x;
+            if (Mathf.Abs(camDistance) >= spriteWidth)
+            {
+                float offest = (camDistance > 0) ? spriteWidth*2f : -spriteWidth * 2f
+                bg.position += new Vector3(offest, 0, 0);
+            }
+        }
+    }
 }
