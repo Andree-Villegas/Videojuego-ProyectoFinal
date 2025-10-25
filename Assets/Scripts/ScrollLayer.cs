@@ -24,7 +24,11 @@ public class ScrollLayer : MonoBehaviour
             backgrounds[i] = transform.GetChild(i);
         }
 
-    }
+        if (cam != null) cam = Camera.main.transform;
+        lastCampos = cam.position;
 
-   
+        //Obtiene el ancho del sprite automaticamente
+        spriteWidth = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.x;
+
+    }   
 }
