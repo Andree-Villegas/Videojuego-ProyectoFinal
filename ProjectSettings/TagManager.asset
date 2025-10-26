@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - floor
-  - moneda
+  - Moneda
   layers:
   - Default
   - TransparentFX
