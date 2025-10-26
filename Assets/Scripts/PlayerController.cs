@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,9 +12,6 @@ public class PlayerController : MonoBehaviour
     public float groundRadius = 0.1f;
     public LayerMask groundLayer;
     private Animator animator;
-
-    private int coins;
-    public TMP_Text textCoins;
 
     void Start()
 
@@ -47,19 +43,8 @@ public class PlayerController : MonoBehaviour
 
 
     private void FixedUpdate()
-
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.CompareTag("Moneda"))
-        {
-            Destroy(collision.gameObject);
-            coins++;
-            textCoins.text = coins.ToString();
-        }
     }
 
 }
