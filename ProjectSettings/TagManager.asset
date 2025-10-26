@@ -6,6 +6,7 @@ TagManager:
   tags:
   - floor
   - Moneda
+  - pinchos
   layers:
   - Default
   - TransparentFX
