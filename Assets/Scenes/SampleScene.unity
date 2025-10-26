@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  autoMove: 1
+  autoMove: 0
 --- !u!1 &531651694
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,7 +8495,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &1321352606
 Animator:
   serializedVersion: 7
