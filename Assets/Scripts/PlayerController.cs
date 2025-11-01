@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class PlayerController : MonoBehaviour
 
 {
     public float speed = 5;
-    private Rigidbody2D rb2D; //Accede al componenete de físicas en unity
+    private Rigidbody2D rb2D; 
     private float move;
     public float jumpforce = 4;
+
     private bool isGrounded;
     public Transform groundCheck;
     public float groundRadius = 0.1f;
     public LayerMask groundLayer;
+
+ 
     private Animator animator;
 
     void Start()
@@ -45,6 +49,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("pinchos"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 }

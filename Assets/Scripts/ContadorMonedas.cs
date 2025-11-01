@@ -17,7 +17,7 @@ public class ContadorMonedas : MonoBehaviour
         }
     }
   
-    private int coins = 0; 
+    private int coins = 0;
     public TMP_Text textCoins; 
 
     public void AñadirMoneda(int cantidad = 1)
