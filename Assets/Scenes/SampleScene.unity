@@ -927,6 +927,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
   m_PrefabInstance: {fileID: 330512835}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &330512837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  m_PrefabInstance: {fileID: 330512835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &364074625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1075,7 +1086,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 22.3219, y: -22.3217}
+  m_AnchoredPosition: {x: 22.3219, y: -22.321655}
   m_SizeDelta: {x: 44.6437, y: 44.6437}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &391560930
@@ -1459,8 +1470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ab56e3a766d744583fd4a0d80965b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.8
-  autoMove: 0
+  playerTarget: {fileID: 1321352603}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 3, z: -10}
 --- !u!1001 &523502868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1960,7 +1972,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 646753127}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1321352609}
+        m_TargetAssemblyTypeName: PlayerMoveJoystick, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &646753127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11126,6 +11150,7 @@ GameObject:
   - component: {fileID: 1321352605}
   - component: {fileID: 1321352604}
   - component: {fileID: 1321352608}
+  - component: {fileID: 1321352609}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Player
@@ -11297,13 +11322,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321352602}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6028df9c71201e3498e12dc06e8847e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
   jumpforce: 5
+  groundCheck: {fileID: 1676290666}
+  groundRadius: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &1321352609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321352602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74258c6422a4a04982408897b5e06fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 330512837}
+  speed: 5
+  jumpForce: 5
   groundCheck: {fileID: 1676290666}
   groundRadius: 0.1
   groundLayer:
@@ -11661,7 +11706,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
